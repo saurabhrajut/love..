@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise For You ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas for floating particles, glowing stars & rose petals -->
+  <canvas id="bg-canvas"></canvas>
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Background Music Control & Customize Button -->
+  <div class="top-nav">
+    <button id="customize-btn" class="nav-pill-btn" title="Customize Names & Details">
+      <span>✏️ Customize</span>
+    </button>
+    <button id="music-btn" class="nav-pill-btn" title="Toggle Romantic Melody">
+      <span id="music-icon">🎵</span>
+      <span id="music-text">Play Melody</span>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- STEP 1: The Sealed Love Envelope -->
+    <section id="step-envelope" class="step active">
+      <div class="envelope-wrapper">
+        <div class="floating-badge">A Heartfelt Message For You 💌</div>
+        <div class="envelope" id="envelope-element">
+          <div class="envelope-flap"></div>
+          <div class="envelope-pocket"></div>
+          <div class="letter-peek">
+            <span class="letter-peek-heart">❤️</span>
+          </div>
+          <div class="wax-seal" id="seal-trigger">
+            <span>Tap To Open</span>
+          </div>
+        </div>
+        <p class="tap-hint">Tap on the seal to open your surprise ✨</p>
+      </div>
+    </section>
+
+    <!-- STEP 2: The Romantic Story & Love Notes -->
+    <section id="step-story" class="step">
+      <div class="card glass-card story-card">
+        <div class="card-glow"></div>
+        <div class="header-tag">Only For My Sweetheart</div>
+        <h1 class="romantic-title"><span class="girl-name-display">My Love</span>,</h1>
+        
+        <p class="story-subtitle">
+          "Zindagi me hazaron log milte hain, lekin dil sirf ek ke liye dhadakta hai... aur mera dil sirf tumhare liye dhadakta hai."
+        </p>
+
+        <!-- Live Love Timer Badge -->
+        <div class="love-timer-badge">
+          <div class="timer-tag">⏳ Counting Every Second I've Loved You</div>
+          <div class="timer-digits">
+            <div class="time-box"><span id="days-count">0</span><small>Days</small></div>
+            <div class="time-sep">:</div>
+            <div class="time-box"><span id="hours-count">0</span><small>Hours</small></div>
+            <div class="time-sep">:</div>
+            <div class="time-box"><span id="mins-count">0</span><small>Mins</small></div>
+            <div class="time-sep">:</div>
+            <div class="time-box"><span id="secs-count">0</span><small>Secs</small></div>
+          </div>
+        </div>
+
+        <!-- Interactive Reasons Cards -->
+        <div class="reasons-carousel">
+          <div class="reason-card active" data-index="0">
+            <div class="reason-badge">Reason #1</div>
+            <h3>Teri Wo Pyaari Muskaan ✨</h3>
+            <p>Jab tum hasti ho na, toh lagta hai jaise duniya ki saari khushiyan ek pal me mere saamne aa gayi hon.</p>
+          </div>
+          <div class="reason-card" data-index="1">
+            <div class="reason-badge">Reason #2</div>
+            <h3>Teri Masoomiyat Aur Care ❤️</h3>
+            <p>Tumhara choti choti baaton pe care karna, daantna aur fir manana... meri har subah aur shaam ko khoobsurat bana deta hai.</p>
+          </div>
+          <div class="reason-card" data-index="2">
+            <div class="reason-badge">Reason #3</div>
+            <h3>Mera Sabse Accha Dost 🌟</h3>
+            <p>Tum sirf mera pyaar nahi, meri best friend ho jisse mai apni har baat bina kisi jhijhak ke share kar sakta hoon.</p>
+          </div>
+          <div class="reason-card" data-index="3">
+            <div class="reason-badge">Reason #4</div>
+            <h3>Mera Har Kal, Tumhare Saath 💫</h3>
+            <p>Mujhe aane waali poori zindagi bas tumhare saath bitani hai. Har khushi me, har mushkil me, hamesha saath rehna hai.</p>
+          </div>
+        </div>
+
+        <!-- Carousel navigation -->
+        <div class="carousel-controls">
+          <button id="prev-reason" class="carousel-btn">‹</button>
+          <div class="dots-container" id="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button id="next-reason" class="carousel-btn">›</button>
+        </div>
+
+        <!-- Memory Polaroids Gallery -->
+        <div class="polaroid-section">
+          <div class="section-tag-pill">📸 Hamari Pyaari Yaadein</div>
+          <p class="polaroid-instruction">Tap the camera icon on any photo to add your real pictures! ✨</p>
+          <div class="polaroids-grid">
+            <div class="polaroid-card">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='260' viewBox='0 0 300 260'><rect width='300' height='260' fill='%232a0c20'/><circle cx='150' cy='110' r='55' fill='%23ff2d55' opacity='0.3'/><text x='150' y='125' font-size='50' text-anchor='middle'>✨</text><text x='150' y='170' font-family='sans-serif' font-size='15' fill='%23ffc1e3' font-weight='bold' text-anchor='middle'>Pehli Mulaqaat</text></svg>" alt="Memory 1" id="polaroid-img-1" class="polaroid-photo">
+                <label for="upload-photo-1" class="upload-badge" title="Tap to upload photo">📷</label>
+                <input type="file" id="upload-photo-1" accept="image/*" class="photo-file-input">
+              </div>
+              <p class="polaroid-caption">Wo Pehli Baar Milna ✨</p>
+            </div>
+
+            <div class="polaroid-card">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='260' viewBox='0 0 300 260'><rect width='300' height='260' fill='%23250b28'/><circle cx='150' cy='110' r='55' fill='%23fcd34d' opacity='0.25'/><text x='150' y='125' font-size='50' text-anchor='middle'>🌙</text><text x='150' y='170' font-family='sans-serif' font-size='15' fill='%23fcd34d' font-weight='bold' text-anchor='middle'>Lambi Baatein</text></svg>" alt="Memory 2" id="polaroid-img-2" class="polaroid-photo">
+                <label for="upload-photo-2" class="upload-badge" title="Tap to upload photo">📷</label>
+                <input type="file" id="upload-photo-2" accept="image/*" class="photo-file-input">
+              </div>
+              <p class="polaroid-caption">Raat Bhar Ki Baatein 🌙</p>
+            </div>
+
+            <div class="polaroid-card">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='260' viewBox='0 0 300 260'><rect width='300' height='260' fill='%23330e25'/><circle cx='150' cy='110' r='55' fill='%23ff2d55' opacity='0.35'/><text x='150' y='125' font-size='50' text-anchor='middle'>❤️</text><text x='150' y='170' font-family='sans-serif' font-size='15' fill='%23ffc1e3' font-weight='bold' text-anchor='middle'>Mera Sukoon</text></svg>" alt="Memory 3" id="polaroid-img-3" class="polaroid-photo">
+                <label for="upload-photo-3" class="upload-badge" title="Tap to upload photo">📷</label>
+                <input type="file" id="upload-photo-3" accept="image/*" class="photo-file-input">
+              </div>
+              <p class="polaroid-caption">Tu Hi Mera Sukoon ❤️</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- "Open When..." Little Love Letters -->
+        <div class="open-when-section">
+          <div class="section-tag-pill">💌 "Open When..." Letters</div>
+          <p class="open-when-hint">Whenever you need me, tap a letter to open my heart:</p>
+          <div class="mini-envelopes-grid">
+            <div class="mini-envelope" data-letter="miss">
+              <div class="mini-env-icon">🧸</div>
+              <div class="mini-env-title">When You Miss Me</div>
+              <span class="mini-env-tap">Tap to Read 💌</span>
+            </div>
+            <div class="mini-envelope" data-letter="low">
+              <div class="mini-env-icon">🌧️</div>
+              <div class="mini-env-title">When You Feel Low</div>
+              <span class="mini-env-tap">Tap to Read 💌</span>
+            </div>
+            <div class="mini-envelope" data-letter="sleep">
+              <div class="mini-env-icon">🌙</div>
+              <div class="mini-env-title">Can't Fall Asleep</div>
+              <span class="mini-env-tap">Tap to Read 💌</span>
+            </div>
+          </div>
+
+          <!-- Active Letter Reveal Card -->
+          <div class="letter-reveal-box" id="letter-reveal-box">
+            <div class="letter-reveal-card glass-card">
+              <button class="close-letter-btn" id="close-letter-btn">&times;</button>
+              <h4 id="letter-reveal-title">When You Miss Me 🧸</h4>
+              <p id="letter-reveal-body">Aankhein band karo aur dil pe haath rakho... mai hamesha tumhare saath hoon.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- "Love Jar" Compliment Dispenser -->
+        <div class="love-jar-section">
+          <div class="section-tag-pill">🍬 Infinite Love Dispenser</div>
+          <div class="glowing-jar-container" id="love-jar-trigger" title="Tap for a sweet love reason!">
+            <div class="glowing-jar">
+              <span class="jar-icon">🫙</span>
+              <span class="sparkling-floating-hearts">💖</span>
+            </div>
+            <div class="jar-info">
+              <h4>The Jar of Endless Love</h4>
+              <p>Tap the jar to get a surprise reason why you are so special to me ✨</p>
+            </div>
+          </div>
+          <div class="jar-note-display" id="jar-note-display">
+            <span class="quote-mark">“</span>
+            <span id="jar-note-text">Tumhari aankhon me mujhe apna aane waala kal dikhta hai.</span>
+            <span class="quote-mark">”</span>
+          </div>
+        </div>
+
+        <!-- Heartbeat Sensor Simulator -->
+        <div class="heartbeat-section">
+          <p class="heartbeat-text">Hold down to feel my heartbeat for you:</p>
+          <div class="heartbeat-button" id="heartbeat-trigger">
+            <span class="beating-heart">💓</span>
+            <span class="bpm-counter" id="bpm-display">72 BPM</span>
+          </div>
+          <div class="heartbeat-wave" id="heartbeat-wave"></div>
+        </div>
+
+        <button id="proceed-to-proposal" class="primary-btn glow-btn">
+          I Have A Question For You... 🌹
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 3: The Grand Proposal -->
+    <section id="step-proposal" class="step">
+      <div class="card glass-card proposal-card">
+        <div class="ring-spotlight"></div>
+        <div class="sparkles-container"></div>
+        
+        <div class="proposal-header">
+          <div class="infinity-symbol">∞</div>
+          <h2 class="question-headline">
+            Will You Be Mine Forever, <span class="girl-name-display">My Love</span>?
+          </h2>
+          <p class="proposal-quote">
+            "Haath thaam kar chalna chahta hoon umr bhar,<br>
+            kya tum mera humsafar banogi?"
+          </p>
+        </div>
+
+        <!-- Interactive Virtual Ring Box -->
+        <div class="ring-box-wrapper" id="ring-box-wrapper">
+          <div class="ring-box closed" id="ring-box">
+            <div class="ring-box-lid"></div>
+            <div class="ring-box-cushion">
+              <div class="sparkle-ring">
+                <span class="diamond">💎</span>
+                <span class="band">💍</span>
+              </div>
+            </div>
+          </div>
+          <p class="ring-hint">Tap the velvet box to reveal the ring 💍</p>
+        </div>
+
+        <!-- Yes / No Interactive Buttons -->
+        <div class="proposal-actions" id="proposal-actions">
+          <button id="yes-btn" class="proposal-btn yes-button">
+            <span class="btn-text">YES, I WILL! 💖💍</span>
+            <span class="btn-glimmer"></span>
+          </button>
+          <button id="no-btn" class="proposal-btn no-button">
+            <span class="btn-text">No 😜</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: The Euphoric Celebration -->
+    <section id="step-celebration" class="step">
+      <div class="card glass-card celebration-card">
+        <div class="trophy-heart">💖</div>
+        <h1 class="celebration-heading">SHE SAID YES! 🎉💍</h1>
+        <p class="celebration-sub">
+          Aaj se aur hamesha ke liye, hum do dil ek jaan hain! ❤️
+        </p>
+
+        <!-- Official Eternal Love Certificate -->
+        <div class="love-certificate" id="love-certificate">
+          <div class="certificate-border">
+            <div class="cert-header">
+              <span class="seal-icon">🏆</span>
+              <h4>Official Certificate of Eternal Love</h4>
+            </div>
+            <p class="cert-body">
+              This certifies that
+            </p>
+            <div class="cert-couple">
+              <span class="cert-name" id="cert-boy-name">Saurabh</span>
+              <span class="cert-heart">❤️</span>
+              <span class="cert-name" id="cert-girl-name">My Sweetheart</span>
+            </div>
+            <p class="cert-body">
+              are officially promised to each other for infinite tomorrows, endless laughter, and boundless affection.
+            </p>
+            <div class="cert-date" id="cert-date-display">Signed with Love on October 10, 2026</div>
+          </div>
+        </div>
+
+        <div class="celebration-buttons">
+          <button id="download-cert-btn" class="secondary-btn">
+            📸 Take Screenshot / Share
+          </button>
+          <button id="replay-btn" class="nav-pill-btn">
+            ✨ Relive This Moment
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Customization Drawer Modal -->
+  <div class="modal-backdrop" id="custom-modal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3>✨ Customize Proposal Details</h3>
+        <button id="close-modal" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="input-girl-name">Her Name (Uska Naam):</label>
+          <input type="text" id="input-girl-name" placeholder="e.g. Simran / Priya / Babydoll" value="My Love">
+        </div>
+        <div class="form-group">
+          <label for="input-boy-name">Your Name (Aapka Naam):</label>
+          <input type="text" id="input-boy-name" placeholder="e.g. Saurabh" value="Saurabh">
+        </div>
+        <div class="form-group">
+          <label for="input-custom-quote">Your Special Message / Shayari:</label>
+          <textarea id="input-custom-quote" rows="3" placeholder="Apna special message ya shayari likhein yaha...">Haath thaam kar chalna chahta hoon umr bhar, kya tum mera humsafar banogi?</textarea>
+        </div>
+        <div class="form-group">
+          <label for="input-start-date">Love Start / Anniversary Date (Kab se saath hain):</label>
+          <input type="date" id="input-start-date" value="2025-01-01">
+        </div>
+        <button id="save-custom-btn" class="primary-btn glow-btn">Save & Apply Changes 💖</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
